@@ -1,0 +1,317 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+/* Слой с изображением */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;           /* выше родителя, но ниже контента */
+  height: 100%;
+  width: 100%;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Затемняющий слой поверх картинки, но под текстом */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;           /* выше картинки, ниже контента */
+  background: linear-gradient(
+    135deg,
+    rgba(17, 24, 39, 0.88) 0%,
+    rgba(17, 24, 39, 0.7) 50%,
+    rgba(26, 86, 219, 0.55) 100%
+  );
+  pointer-events: none; /* чтобы не мешал кликам */
+}
+
+/* Основной контент – самый верхний слой */
+.hero__content {
+  position: relative;
+  z-index: 3;           /* выше фона и оверлея */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+/* ---------- Остальные стили без изменений ---------- */
+.hero__text {
+  color: var(--color-white);
+}
+
+.hero__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.3px;
+  transition: all var(--transition);
+}
+
+.hero__flag-icon {
+  width: 22px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 1024px) {
+  .hero__badge {
+    font-size: 1.1rem;
+    padding: 12px 28px;
+    border-radius: 60px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .hero__flag-icon {
+    width: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__badge {
+    font-size: 1.1rem;
+    padding: 12px 26px;
+    border-radius: 60px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 28px;
+  }
+  .hero__flag-icon {
+    width: 26px;
+  }
+}
+
+.hero__title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 32px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn {
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.hero__stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.hero__stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero__videos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero__video-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.hero__video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero__video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero__video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.hero__video-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 0 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.hero__video-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.hero__video-dot--live {
+  background: var(--color-red);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero__wave {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  z-index: 4;           /* выше всего, чтобы перекрыть стык */
+  line-height: 0;
+}
+
+.hero__wave svg {
+  width: 100%;
+  height: 80px;
+}
+
+@media (max-width: 1024px) {
+  .hero__content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__cta {
+    justify-content: center;
+  }
+  .hero__stats {
+    justify-content: center;
+  }
+  .hero__title {
+    font-size: 2.4rem;
+  }
+  .hero__videos {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .hero__video-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+  .hero__title {
+    font-size: 1.8rem;
+  }
+  .hero__videos {
+    flex-direction: column;
+  }
+  .hero__stats {
+    gap: 20px;
+  }
+  .hero__stat-number {
+    font-size: 1.5rem;
+  }
+  .hero__wave svg {
+    height: 40px;
+  }
+}
