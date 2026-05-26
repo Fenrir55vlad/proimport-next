@@ -1,5 +1,3 @@
-
-
 function About() {
   return (
     <section className="about" id="about">
@@ -7,8 +5,8 @@ function About() {
         <div className="about__grid">
           <div className="about__image-wrapper">
             <img
-              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
-              alt="Склад с товарами из Китая"
+              src="/images/photo123.avif"
+              alt="PROимпорт — ваш надёжный партнёр по поставкам из Китая"
               loading="lazy"
             />
             <div className="about__badge">
